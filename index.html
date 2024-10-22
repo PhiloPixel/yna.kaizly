@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Display</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .letter {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #b06a5c;
+            background-color: #fff;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+        }
+    </style>
+</head>
+<body>
+    <div class="letter" id="letter">
+        <p id="letterContent"></p>
+    </div>
+
+    <script>
+        const letter = document.getElementById('letter');
+        const letterContent = document.getElementById('letterContent');
+
+        const message = "To Yna,\n\nMy heart beats so fast whenever I see you. I don't know why, but it feels like my eyes have a life of their own and they just keep looking at you. It feels so good to see you smile, and I wish I could be the reason for those smiles. I just hope you notice me too, and know that there's someone who silently cares for you.\n\n- James";
+
+        window.onload = function() {
+            setTimeout(function() {
+                letter.style.display = 'block'; // Show the letter
+                typeLetter(message); // Start typing effect
+            }, 1000); // Delay the animation by 1 second
+        };
+
+        function typeLetter(text) {
+            let index = 0;
+            letterContent.innerHTML = ''; // Clear previous content
+
+            const typingInterval = setInterval(() => {
+                if (index < text.length) {
+                    letterContent.innerHTML += text.charAt(index);
+                    index++;
+                } else {
+                    clearInterval(typingInterval); // Stop typing
+                }
+            }, 50); // Typing speed
+        }
+    </script>
+</body>
+</html>
